@@ -1,11 +1,8 @@
 {
-  "name": "MariaDB Development",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "features": {
-    "ghcr.io/devcontainers/features/mariadb:1": {
-      "version": "latest"
-    }
-  },
+  "name": "MariaDB with Docker Compose",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,12 +11,5 @@
       ]
     }
   },
-  "forwardPorts": [3306],
-  "portsAttributes": {
-    "3306": {
-      "label": "MariaDB",
-      "onAutoForward": "notify"
-    }
-  },
-  "postCreateCommand": "sudo service mariadb start && mysql -e \"CREATE USER IF NOT EXISTS 'dev'@'localhost' IDENTIFIED BY 'devpassword'; GRANT ALL PRIVILEGES ON *.* TO 'dev'@'localhost' WITH GRANT OPTION; FLUSH PRIVILEGES;\""
+  "forwardPorts": [3306]
 }
