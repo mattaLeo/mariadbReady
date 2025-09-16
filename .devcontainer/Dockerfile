@@ -2,7 +2,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
 
 # Aggiorna pacchetti e installa mariadb-server
 RUN apt-get update && \
-    apt-get install -y mariadb-server npm python3 python3-pip && \
+    apt-get install -y mariadb-server npm && \
+    npm install python
     rm -rf /var/lib/apt/lists/*
 
 # Copia un file di setup o script di avvio (opzionale)
